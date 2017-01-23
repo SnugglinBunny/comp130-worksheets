@@ -48,7 +48,7 @@ int main()
 	//<------------------------------------------------------------
 	//Probably won't work here but is working code.
 	cout << "\nHow many letters do you want per word? 4-7\n";
-    cin>>opt; //Fetches user response
+    	cin>>opt; //Fetches user response
          
          switch (opt) //selection statement - option
          {
@@ -65,7 +65,7 @@ int main()
                      wordLength = 7;
                      break;
 
-//----------------------------------------------------------------->
+	//------------------------------------------------------------>
 
 	while (guesses < 4)
 	{
