@@ -22,73 +22,79 @@ int main()
 	// Minimum and maximum coordinates for the fractal
 	const double minX = -2, maxX = 1, minY = -1.5, maxY = 1.5;
 
-	int max_iteration = 1000;
-	int iteration = 0;
-
 	// Generate the image
 	for (int pixelY = 0; pixelY < image.height(); pixelY++)
 	{
 		// TODO: Map the y coordinate into the range minY to maxY
-		//double y0 =
-		double y0 = (maxY - minY) * (pixelY / 800) + minY;
+		double y0 = (pixelY / 800.0) * (maxY - minY) + minY;
 
 		for (int pixelX = 0; pixelX < image.width(); pixelX++)
 		{
 			// TODO: Map the x coordinate into the range minX to maxX
-			//double x0 =
-
-			double x0 = (maxX - minX) * (pixelX / 800) + minX;
+			double x0 = (pixelX / 800.0) * (maxX - minX) + minX;
 			double xStore = 0;
+			int iteration = 0;
+			int maxIteration = 200;
 			double yStore = 0;
 
 			// TODO: implement the algorithm to colour a single pixel (x0, y0) of the Mandelbrot set fractal
 			// The code below simply fills the screen with random pixels
-			while (iteration < max_iteration && xStore * xStore + yStore *yStore < 4)
+
+
+			while (iteration < maxIteration && xStore * xStore + yStore * yStore < 6)
 			{
-				double xTemp = xStore *xStore - yStore * yStore + x0;
-				yStore = 2 *xStore *xStore + y0;
+				double xTemp = xStore * xStore - yStore * yStore + x0;
+				yStore = 2 * xStore * yStore + y0;
 				xStore = xTemp;
-				++iteration;
+				iteration++;
 			}
 
 			// Write the pixel
 			// TODO: change the right-hand side of these three lines to write the desired pixel colour value
 			int Red = 0;
-			int Blue = 0;
 			int Green = 0;
+			int Blue = 0;
 
-			if (iteration <= 25)
+			if (iteration <= 0)
 			{
 				Red = 255;
 			}
 
-			if (iteration <= 50)
+			else if (iteration <= 60)
 			{
 				Red = 255;
-				Green = 255;
+				Blue = 255 * (iteration / 16);
 			}
 
-			if (iteration <= 75)
-			{
-				Red = 255;
-				Blue = 255;
-			}
-
-			if (iteration <= 100)
+			else if (iteration <= 120)
 			{
 				Red = 255;
 				Green = 255;
+			}
+
+			else if (iteration <= 180)
+			{
+				Green = 255;
 				Blue = 255;
 			}
 
+			else if (iteration <= 199)
+			{
+				Red = 125;
+				Blue = 124;
+				Green = 124;
+			}
 			else
 			{
-				Red, Green, Blue = 255;
+				Red = 0;
+				Blue = 0;
+				Green = 0;
 			}
-						
+
 			image(pixelX, pixelY, 0, 0) = Red; // red component
 			image(pixelX, pixelY, 0, 1) = Green; // green component
 			image(pixelX, pixelY, 0, 2) = Blue; // blue component
+
 		}
 
 		// Uncomment this line to redisplay the image after each row is generated
@@ -100,7 +106,7 @@ int main()
 	display.display(image);
 
 	// Uncomment this line to save the image to disk
-	//image.save_bmp("mandelbrot.bmp");
+	image.save_bmp("mandelbrot.bmp");
 
 	// Wait for the window to be closed
 	while (!display.is_closed())
