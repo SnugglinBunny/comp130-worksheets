@@ -30,61 +30,65 @@ int main()
 	{
 		// TODO: Map the y coordinate into the range minY to maxY
 		//double y0 =
-		double y0 = (maxY - minY) * (pixelY * 800) + minY;
+		double y0 = (maxY - minY) * (pixelY / 800) + minY;
 
 		for (int pixelX = 0; pixelX < image.width(); pixelX++)
 		{
 			// TODO: Map the x coordinate into the range minX to maxX
 			//double x0 =
 
-			double x0 = (maxX - minX) * (pixelX * 800) + minX;
+			double x0 = (maxX - minX) * (pixelX / 800) + minX;
+			double xStore = 0;
+			double yStore = 0;
 
 			// TODO: implement the algorithm to colour a single pixel (x0, y0) of the Mandelbrot set fractal
 			// The code below simply fills the screen with random pixels
-			int x = pixelX + 1;
-			x = (pixelX*pixelX) - (pixelY*pixelY) - y0;
-			int y = pixelY + 1;
-			y = (2 * pixelX * pixelY) + y0;
-			
-			int colour;
-			colour = (pixelX*pixelX) + (pixelY*pixelY);
-
-			int r = 255, g = 255, b = 255;
-
-			int H = iteration, S = 1, V = 1;
-			void hsv2rgb(H, S, V)
+			while (iteration < max_iteration && xStore * xStore + yStore *yStore < 4)
 			{
-				double r, g, b;
-
-				double i = floor(H * 6);
-				double f = H * 6 - i;
-				double p = V * (1 - S);
-				double q = V * (1 - f * S);
-				double t = V * (1 - (1 - f) * S)
-
-					switch (i % 6)
-					{
-					case 0: r = V, g = t, b = p; break;
-					case 1: r = q, g = V, b = p; break;
-					case 2: r = p, g = V, b = t; break;
-					case 3: r = p, g = q, b = V; break;
-					case 4: r = t, g = p, b = V; break;
-					case 5: r = V, g = p, b = q; break;
-					}
-			}
-			if (iteration == max_iteration) 
-			{
-				r = 0;
-				g = 0;
-				b = 0;
+				double xTemp = xStore *xStore - yStore * yStore + x0;
+				yStore = 2 *xStore *xStore + y0;
+				xStore = xTemp;
+				++iteration;
 			}
 
 			// Write the pixel
 			// TODO: change the right-hand side of these three lines to write the desired pixel colour value
-			image(pixelX, pixelY, 0, 0) = r; // red component
-			image(pixelX, pixelY, 0, 1) = g; // green component
-			image(pixelX, pixelY, 0, 2) = b; // blue component
-			iteration++;
+			int Red = 0;
+			int Blue = 0;
+			int Green = 0;
+
+			if (iteration <= 25)
+			{
+				Red = 255;
+			}
+
+			if (iteration <= 50)
+			{
+				Red = 255;
+				Green = 255;
+			}
+
+			if (iteration <= 75)
+			{
+				Red = 255;
+				Blue = 255;
+			}
+
+			if (iteration <= 100)
+			{
+				Red = 255;
+				Green = 255;
+				Blue = 255;
+			}
+
+			else
+			{
+				Red, Green, Blue = 255;
+			}
+						
+			image(pixelX, pixelY, 0, 0) = Red; // red component
+			image(pixelX, pixelY, 0, 1) = Green; // green component
+			image(pixelX, pixelY, 0, 2) = Blue; // blue component
 		}
 
 		// Uncomment this line to redisplay the image after each row is generated
