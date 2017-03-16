@@ -7,6 +7,21 @@
 const int wordLength = 5;
 const int numberOfWords = 15;
 
+int getLikeness(std::string guessedWord, std::string secret)
+{
+	int i;
+	int result = 0;
+		for (i = 0; i < secret.length(); i++)
+		{
+			if (secret.at(i) == guessedWord.at(i))
+				
+				result++;
+			
+		}
+
+		return result;
+}
+
 int main()
 {
 	// Seed the random number generator with the current time,
