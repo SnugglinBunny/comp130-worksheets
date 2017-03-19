@@ -1,0 +1,75 @@
+% Please do not change the document class
+\documentclass{scrartcl}
+
+% Please do not change these packages
+\usepackage[hidelinks]{hyperref}
+\usepackage[none]{hyphenat}
+\usepackage{setspace}
+\doublespace
+
+% You may add additional packages here
+\usepackage{amsmath}
+
+% Please include a clear, concise, and descriptive title
+\title{Personal Contributions}
+
+% Please do not change the subtitle
+\subtitle{Group Project}
+
+% Please put your student number in the author field
+\author{1604629}
+
+\begin{document}
+
+\maketitle
+
+\abstract{This document will list all of my contributions from our group projects. It should be noted that although the project was twelve weeks the last two weeks were content locked and used only for polishing.}
+
+\newpage
+\clearpage
+
+\section*{}
+
+
+\subsection*{Sprint 1}
+
+The first sprint we were just learning the basics of the unreal engine and as such we didn't really get much in engine. The four programmers managed to get raycasting working between us which is useful as our game will be able to toggle stuff from a distance using this.
+
+\subsection*{Sprint 2}
+
+This week I decided to research into the first thing the player will see when they usually launch a game, the main menu. However we had decided to do all of our menu stuff through the phone so it would be a good idea to look into this for later implementation. We also managed to use the raycasting from last week to toggle lights on and off from a far.
+
+\subsection*{Sprint 3}
+
+This week I actually got the entire main menu and pause systems functional, the functions can now be transfered at a later date to the phones ui. As well as starting the game this allows the player to change resolution to their monitor sizes. Researched save and load games but it looks like it will take too long and not have enough impact.
+
+\subsection*{Sprint 4}
+
+This week we finally got our svn server up and running but we experienced a lot of problems with it. Particularly the BA's were struggling to use it and kept saving over stuff. We decided as a team we should all attend the svn tutorial lecture. I did a lot of research into 3d wigets which I think will be how we implement the phone later on.
+
+\subsection*{Sprint 5}
+
+This week I built a basic health system for our game where the player starts with 100 health and takes 60 damage each time the enemy hits them. However the health slowly regens at 5 per second.
+
+\subsection*{Sprint 6}
+
+Following feedback from the previous week I implemented a blood overlay which starts entirely transparent and appears based on how the low the players health is. I also created the sprint and crouch functions here and made sure the player couldn't sprint while crouched.
+
+\subsection*{Sprint 7}
+
+Over the course of these weeks I had been working on my own ai system as a way for me to learn it. As such I help Lucy this week with a few problems she was having with the ai like the damage which only applied on first overlap with the enemy. Meaning once hit you could stand still and take no damage. I also worked with her to add sound to my crouch and sprint functions so the ai can hear the player better depending on what state they were in.
+
+\subsection*{Sprint 8}
+
+This week I worked on optimising the game, we had a lot of things running on event tick which I heard can cause lag and unnecessary load on the system. Also created the stamina system which drains very quickly but regens at half the speed. This allowed the player to run for short bursts creating a lot more tension if they are being chased by the ai. Also I had stuff from weeks before that still hadn't gone in engine due to problems with the BA's and people saving over eachothers work but this was resolved when we attended the SVN tutorials. Added my stuff to engine.
+
+\subsection*{Sprint 9}
+
+This week we found that the built in crouch feature had somehow been deleted and we had to rebuild it from scratch, this caused a lot of problems with collisions and player heights. Also worked with Lucy to make the ai work better and various balancing regarding player sound and visible distance.
+
+\subsection*{Sprint 10}
+
+The final week for content and there isn't really much to do. The group have asked me to make the blood overlay darker to fit in with the general feel of the game. As well as to try and fix the collision box on the crouch as it currently works on some camera trickery, you don't actually go under stuff.
+
+
+\end{document}
